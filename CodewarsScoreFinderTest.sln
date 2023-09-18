@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodewarsScoreFinderTest", "CodewarsScoreFinderTest\CodewarsScoreFinderTest.csproj", "{44542C6B-3B11-49FF-9720-B0DF09C9D6DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44542C6B-3B11-49FF-9720-B0DF09C9D6DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44542C6B-3B11-49FF-9720-B0DF09C9D6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44542C6B-3B11-49FF-9720-B0DF09C9D6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44542C6B-3B11-49FF-9720-B0DF09C9D6DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0A62CFD5-6992-4848-919D-ED3D014D0154}
+	EndGlobalSection
+EndGlobal

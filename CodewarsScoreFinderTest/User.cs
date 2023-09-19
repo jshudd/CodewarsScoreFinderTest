@@ -1,9 +1,9 @@
 ﻿using System;
 namespace CodewarsScoreFinderTest
 {
-	public class Users
+	public class User
 	{
-		public Users()
+		public User()
 		{
 		}
 
@@ -12,7 +12,7 @@ namespace CodewarsScoreFinderTest
 		public int Honor { get; set; }
 		public string JSON { get; set; }
 
-		public static List<Users> UsersList { get; set; } = new List<Users>();
+		public static List<User> UsersList { get; set; } = new List<User>();
 	}
 }
 

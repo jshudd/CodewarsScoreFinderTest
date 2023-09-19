@@ -9,10 +9,10 @@ namespace CodewarsScoreFinderTest
 		{
 		}
 
-		public string UserName { get; set; }
-		public string Name { get; set; }
-		public string Honor { get; set; }
-		public string JSON { get; set; }
+		public string? UserName { get; set; }
+		public string? Name { get; set; }
+		public string? Honor { get; set; }
+		public string? JSON { get; set; }
 
 		public static List<User> UsersList { get; set; } = new List<User>();
 
@@ -27,8 +27,8 @@ namespace CodewarsScoreFinderTest
 		{
             foreach (var user in UsersList)
             {
-                JSON = API.CallAPI(user.UserName);
-                ParseJSON();
+                user.JSON = API.CallAPI(user.UserName);
+                user.ParseJSON();
             }
         }
 	}

@@ -22,6 +22,15 @@ namespace CodewarsScoreFinderTest
 
             Honor = JObject.Parse(JSON).GetValue("honor").ToString();
         }
+
+		public static void PopulateList()
+		{
+            foreach (var user in UsersList)
+            {
+                JSON = API.CallAPI(user.UserName);
+                ParseJSON();
+            }
+        }
 	}
 }
 

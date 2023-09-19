@@ -2,12 +2,10 @@
 namespace CodewarsScoreFinderTest
 {
 	public static class CSV
-	{
-		const string csvPath = "~/ClassLists/CodewarsTest.csv";
-
-		public static void ReadCSV()
+	{	
+		public static void ReadCSV(string path)
 		{
-            var lines = File.ReadAllLines(csvPath);
+            var lines = File.ReadAllLines(path);
 
 			foreach (var user in lines)
 			{

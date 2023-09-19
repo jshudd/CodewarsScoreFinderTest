@@ -16,6 +16,14 @@ namespace CodewarsScoreFinderTest
 
 		public static List<User> UsersList { get; set; } = new List<User>();
 
+		public static void DisplayList()
+		{
+            foreach (var user in UsersList)
+            {
+                Console.WriteLine($"{user.ToString()}");
+            }
+        }
+
 		public void ParseJSON()
 		{
 			Name = JObject.Parse(JSON).GetValue("name").ToString();
@@ -30,6 +38,11 @@ namespace CodewarsScoreFinderTest
                 user.JSON = API.CallAPI(user.UserName);
                 user.ParseJSON();
             }
+        }
+
+		public override string ToString()
+		{
+			return $"{Name}, {UserName}, {Honor}";
         }
 	}
 }

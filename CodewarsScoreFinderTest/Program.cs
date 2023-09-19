@@ -17,7 +17,9 @@ CSV.ReadCSV(csvPath);
 
 User.PopulateList();
 
-foreach (var user in User.UsersList)
-{
-    Console.WriteLine($"{user.Name}, {user.UserName}, {user.Honor}");
-}
+//foreach (var user in User.UsersList)
+//{
+//    Console.WriteLine($"{user.Name}, {user.UserName}, {user.Honor}");
+//}
+
+User.DisplayList();

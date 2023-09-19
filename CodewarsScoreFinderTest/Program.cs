@@ -10,7 +10,8 @@ string csvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeFil
 
 CSV.ReadCSV(csvPath);
 
-foreach (var user in User.UsersList)
-{
-    Console.WriteLine(user.UserName);
-}
+//foreach (var user in User.UsersList)
+//{
+//    Console.WriteLine(user.UserName);
+//}
+

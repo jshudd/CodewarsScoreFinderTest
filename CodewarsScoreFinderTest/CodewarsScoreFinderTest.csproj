@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="ClassLists\" />
+    <Folder Include="bin\Debug\net6.0\ClassLists\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ClassLists\" />
+    <None Include="bin\Debug\net6.0\ClassLists\CodewarsTest.csv" />
   </ItemGroup>
 </Project>

@@ -10,4 +10,8 @@ CSV.ReadCSV(csvPath);
 
 User.PopulateList();
 
-User.DisplayList();
+//User.DisplayList();
+
+Console.WriteLine("Score in Descending Order");
+
+User.DisplayListHighScore();

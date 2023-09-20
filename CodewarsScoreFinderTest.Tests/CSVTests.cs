@@ -28,5 +28,6 @@ public class UnitTest1
         string csvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeFilePath);
 
         Assert.NotNull(csvPath);
+        //Assert.True(File.Exists(csvPath));
     }
 }

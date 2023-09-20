@@ -3,7 +3,7 @@ namespace CodewarsScoreFinderTest
 {
 	public static class CSV
 	{
-		public static void CreateCSV(List<User> users)
+		public static void CreateCSV()
 		{
 			//call method to create filename for new file
 			//call method to ask user to enter usernames

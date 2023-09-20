@@ -5,6 +5,9 @@ namespace CodewarsScoreFinderTest
 	{
 		public static void CreateCSV(List<User> users)
 		{
+			//call method to create filename for new file
+			//call method to ask user to enter usernames
+
 			throw new NotImplementedException();
 		}
 

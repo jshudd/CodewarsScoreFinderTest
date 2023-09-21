@@ -9,8 +9,16 @@ namespace CodewarsScoreFinderTest
 
 			var client = new HttpClient();
 
-			return client.GetStringAsync(cwURL).Result;
-        }
+			try
+			{
+				return client.GetStringAsync(cwURL).Result;
+			}
+			catch (AggregateException)
+			{
+				throw new AggregateException();
+				//return $"Username {userName} was not found.";
+            }
+		}
 	}
 }
 

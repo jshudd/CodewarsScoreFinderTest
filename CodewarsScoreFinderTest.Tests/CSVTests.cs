@@ -1,6 +1,6 @@
 ﻿namespace CodewarsScoreFinderTest.Tests;
 
-public class UnitTest1
+public class CSVTests
 {
     [Fact]
     public void CSVFileNotFound()

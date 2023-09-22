@@ -5,7 +5,7 @@ namespace CodewarsScoreFinderTest.Tests
     {
         //ParseJSON() tests
         [Fact]
-        public void ParseJSON_Success()
+        public void ParseJSON_SUCCESS()
         {
             var user = new User()
             {
@@ -78,7 +78,7 @@ namespace CodewarsScoreFinderTest.Tests
 
         //PopulateList() tests
         [Fact]
-        public void UserListPopulated_Success()
+        public void UserListPopulated_SUCCESS()
         {
             var user1 = new User()
             {

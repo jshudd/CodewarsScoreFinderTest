@@ -66,6 +66,16 @@ namespace CodewarsScoreFinderTest.Tests
             Assert.Equal(721, user.Honor);
         }
 
+        [Fact]
+        public void ParseJSON_FAILED()
+        {
+            var user = new User() { JSON = "" };
+
+            Assert.Throws<Newtonsoft.Json.JsonException>(() => user.ParseJSON());
+            Assert.Null(user.Name);
+            Assert.Null(user.Honor);
+        }
+
         //PopulateList() tests
         [Fact]
         public void UserListPopulated_Success()

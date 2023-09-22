@@ -34,7 +34,16 @@ namespace CodewarsScoreFinderTest
 
 		public void ParseJSON()
 		{
-			Name = JObject.Parse(JSON).GetValue("name").ToString();
+			//Name = JObject.Parse(JSON).GetValue("name").ToString();
+			try
+			{
+				Name = JObject.Parse(JSON).GetValue("name").ToString();
+			}
+			catch (Newtonsoft.Json.JsonException)
+			{
+				Console.WriteLine($"No \"name\" value in JSON file");
+				throw new Newtonsoft.Json.JsonException();
+			}
 
 			if (Name == "")
 				Name = "Not Listed";

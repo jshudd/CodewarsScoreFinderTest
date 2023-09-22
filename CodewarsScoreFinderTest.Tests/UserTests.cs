@@ -111,6 +111,8 @@ namespace CodewarsScoreFinderTest.Tests
         [Fact]
         public void UserListPopulated_FAILED()
         {
+            User.UsersList.Clear();
+
             User.PopulateList();
 
             var testList = new List<User>();

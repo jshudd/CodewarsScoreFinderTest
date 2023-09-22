@@ -82,20 +82,14 @@ namespace CodewarsScoreFinderTest.Tests
         {
             var user1 = new User()
             {
-                //Name = "Jeremy Huddleston",
-                //Honor = 721,
                 UserName = "jshudd"
             };
             var user2 = new User()
             {
-                //Name = "Michael Doyle",
-                //Honor = 1274
                 UserName = "mvdoyle"
             };
             var user3 = new User()
             {
-                //Name = "Cruz Sanchez",
-                //Honor = 941,
                 UserName = "CruzSanchez"
             };
 

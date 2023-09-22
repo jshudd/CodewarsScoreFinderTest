@@ -13,7 +13,7 @@ public class CSVTests
     }
 
     [Fact]
-    public void CreateCSVFile_Success()
+    public void CreateCSVFile_SUCCESS()
     {
         var userNames = new List<User>()
         {

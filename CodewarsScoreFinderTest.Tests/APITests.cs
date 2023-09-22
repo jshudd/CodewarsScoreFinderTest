@@ -12,7 +12,7 @@ namespace CodewarsScoreFinderTest.Tests
         [InlineData("amoriss")]
         [InlineData("CruzSanchez")]
         [InlineData("whitstroup")]
-        public void APICallDoesReturnData_Success(string userName)
+        public void APICallDoesReturnData_SUCCESS(string userName)
 		{
 			var result = API.CallAPI(userName);
 

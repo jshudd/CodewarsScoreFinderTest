@@ -107,5 +107,15 @@ namespace CodewarsScoreFinderTest.Tests
             Assert.Equal(1274, User.UsersList[1].Honor);
             Assert.Equal(941, User.UsersList[2].Honor);
         }
+
+        [Fact]
+        public void UserListPopulated_FAILED()
+        {
+            User.PopulateList();
+
+            var testList = new List<User>();
+
+            Assert.Equal(testList, User.UsersList);
+        }
     }
 }

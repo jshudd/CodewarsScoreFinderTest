@@ -22,18 +22,24 @@ namespace CodewarsScoreFinderTest
 			throw new NotImplementedException();
 		}
 
-		public static void DeleteCSVFile()
+		public static void DeleteCSVFile(string fileName)
 		{
 			throw new NotImplementedException();
 		}
 
-		public static void DeleteUserInCSV()
+		public static void DeleteUserInCSV(string userName)
 		{
             throw new NotImplementedException();
         }
 
         public static void GenerateCSV(string fileName, List<User> users)
 		{
+			throw new NotImplementedException();
+		}
+
+		public static string PromptUser()
+		{
+			//prompt user for filename/username
 			throw new NotImplementedException();
 		}
 

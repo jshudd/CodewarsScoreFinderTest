@@ -31,4 +31,22 @@ public class CSVTests
         Assert.NotNull(csvPath);
         //Assert.True(File.Exists(csvPath));
     }
+
+    [Fact]
+    public void DeleteUserInCSV_SUCCESS()
+    {
+        var userNames = new List<User>()
+        {
+            new User { UserName = "User1"},
+            new User { UserName = "User2"},
+            new User { UserName = "User3"}
+        };
+
+        //hardcoding username for test
+        CSV.DeleteUserInCSV("User2");
+
+        Assert.Equal(2, userNames.Count);
+        Assert.Equal("User1", userNames[0].Name);
+        Assert.Equal("User3", userNames[1].Name);
+    }
 }

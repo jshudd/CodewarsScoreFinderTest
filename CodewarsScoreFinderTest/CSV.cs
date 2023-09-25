@@ -29,6 +29,7 @@ namespace CodewarsScoreFinderTest
 
 		public static void DeleteUserInCSV(string userName)
 		{
+			//search through UserNames List to find one that matches userName
             throw new NotImplementedException();
         }
 

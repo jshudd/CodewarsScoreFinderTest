@@ -28,8 +28,30 @@ public class CSVTests
         string relativeFilePath = @"ClassLists/test.csv";
         string csvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeFilePath);
 
-        Assert.NotNull(csvPath);
-        //Assert.True(File.Exists(csvPath));
+        //Assert.NotNull(csvPath);
+        Assert.True(File.Exists(csvPath));
+    }
+
+    [Fact]
+    public void DeleteCSVFile_SUCCESS()
+    {
+        var users = new List<User>()
+        {
+            new User { UserName = "User1"},
+            new User { UserName = "User2"},
+            new User { UserName = "User3"}
+        };
+
+        var fileName = "testCSV";
+
+        CSV.GenerateCSV(fileName, users);
+
+        CSV.DeleteCSVFile(fileName);
+
+        string relativeFilePath = @"ClassLists/testCSV.csv";
+        string csvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeFilePath);
+
+        Assert.False(File.Exists(csvPath));
     }
 
     [Fact]

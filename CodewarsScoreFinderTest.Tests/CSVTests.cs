@@ -57,18 +57,24 @@ public class CSVTests
     [Fact]
     public void DeleteUserInCSV_SUCCESS()
     {
-        var userNames = new List<User>()
+        var users = new List<User>()
         {
             new User { UserName = "User1"},
             new User { UserName = "User2"},
             new User { UserName = "User3"}
         };
 
+        var fileName = "testCSV";
+
+        CSV.GenerateCSV(fileName, users);
+
         //hardcoding username for test
         CSV.DeleteUserInCSV("User2");
 
-        Assert.Equal(2, userNames.Count);
-        Assert.Equal("User1", userNames[0].Name);
-        Assert.Equal("User3", userNames[1].Name);
+        CSV.ReadCSV(fileName);
+
+        Assert.Equal(2, User.UsersList.Count);
+        Assert.Equal("User1", User.UsersList[0].Name);
+        Assert.Equal("User3", User.UsersList[1].Name);
     }
 }

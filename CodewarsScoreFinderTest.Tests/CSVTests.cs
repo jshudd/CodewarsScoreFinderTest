@@ -102,4 +102,27 @@ public class CSVTests
 
         Assert.Throws<UserNotFoundException>(() => CSV.DeleteUserInCSV("User4"));
     }
+
+    [Fact]
+    public void UpdateUserInCSV_SUCCESS()
+    {
+        var users = new List<User>()
+        {
+            new User { UserName = "User1"},
+            new User { UserName = "User2"},
+            new User { UserName = "User3"}
+        };
+
+        var fileName = "testCSV";
+        var userName = "User1";
+        var newName = "UserChanged";
+
+        CSV.GenerateCSV(fileName, users);
+
+        CSV.UpdateUserInfo(fileName, userName, 0, newName);
+
+        CSV.ReadCSV(fileName);
+
+        Assert.Equal("UserChanged", User.UsersList[0].Name);
+    }
 }

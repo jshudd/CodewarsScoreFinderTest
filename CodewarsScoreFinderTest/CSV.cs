@@ -12,11 +12,6 @@ namespace CodewarsScoreFinderTest
             throw new NotImplementedException();
 		}
 
-		public static string EnterFileName()
-		{
-			throw new NotImplementedException();
-		}
-
 		public static List<User> EnterUserNames()
 		{
 			throw new NotImplementedException();
@@ -36,11 +31,17 @@ namespace CodewarsScoreFinderTest
         public static void GenerateCSV(string fileName, List<User> users)
 		{
 			throw new NotImplementedException();
-		}
+        }
 
-		public static string PromptUser()
+        public static string PromptFileName()
+        {
+            //prompt for fileName
+            throw new NotImplementedException();
+        }
+
+        public static string PromptUserName()
 		{
-			//prompt user for filename/username
+			//prompt for userName
 			throw new NotImplementedException();
 		}
 
@@ -59,10 +60,24 @@ namespace CodewarsScoreFinderTest
 			}
         }
 
-		public static void UpdateUserInfo()
+		public static int SelectUserFromCSV(string userName)
 		{
+			throw new NotImplementedException();
+		}
+
+		public static void UpdateUserInfo
+			(string optFileName = "optFileName",
+			string optUserName = "optUserName",
+			int optIndex = 0,
+			string optNewName = "optNewName")
+		{
+			//prompt for csv fileName
+			//prompt for userName
+			//find index of userName in csv file
+			//prompt for updated userName
+			//update username value in static UserList
+			//load updated UserList in same csv
 			throw new NotImplementedException();
 		}
 	}
 }
-

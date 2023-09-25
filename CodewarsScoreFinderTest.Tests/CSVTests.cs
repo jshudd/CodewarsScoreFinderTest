@@ -55,6 +55,14 @@ public class CSVTests
     }
 
     [Fact]
+    public void DeleteCSVFile_FAILURE()
+    {
+        var wrongFileName = "wrongFileName";
+
+        Assert.Throws<DirectoryNotFoundException>(() => CSV.DeleteCSVFile(wrongFileName));
+    }
+
+    [Fact]
     public void DeleteUserInCSV_SUCCESS()
     {
         var users = new List<User>()

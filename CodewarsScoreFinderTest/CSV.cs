@@ -51,6 +51,11 @@ namespace CodewarsScoreFinderTest
                 User.UsersList.Add(newUser);
 			}
         }
+
+		public static void UpdateUserInfo()
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
 

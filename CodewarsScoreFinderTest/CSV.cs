@@ -5,16 +5,34 @@ namespace CodewarsScoreFinderTest
 	{
 		public static void CreateCSV(List<User> optUsers = null, string optFileName = "optFileName")
 		{
-            //call method to ask user to enter usernames
+            //call method to ask user to enter usernames; store in variable
 			//call method to create filename for new file
             //call method to generate CSV file
 
             throw new NotImplementedException();
 		}
 
-		public static List<User> EnterUserNames()
+		public static List<string> EnterUserNames()
 		{
-			throw new NotImplementedException();
+			//in while loop
+			//prompt user to enter username or type EXIT to exit
+			//add string to temp list
+			//repeat until user types EXIT
+			//return List<string>
+
+			var tempUserName = "";
+			var tempList = new List<string>();
+
+			while(tempUserName != "EXIT")
+			{
+				Console.WriteLine("Enter a username or type EXIT (all caps) to exit\n");
+				tempUserName = Console.ReadLine();
+
+				if(tempUserName != "EXIT" || tempUserName != "")
+					tempList.Add(tempUserName);
+			}
+
+			return tempList;
 		}
 
 		public static void DeleteCSVFile(string fileName)

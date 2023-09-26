@@ -22,8 +22,10 @@ public class CSVTests
             new User { UserName = "User3"}
         };
 
+        var fileName = "testCSV";
+
         // replace below call with individual methods
-        CSV.CreateCSV();
+        CSV.CreateCSV(userNames, fileName);
 
         string relativeFilePath = @"ClassLists/test.csv";
         string csvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeFilePath);

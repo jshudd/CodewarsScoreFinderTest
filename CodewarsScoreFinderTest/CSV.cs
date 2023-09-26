@@ -83,6 +83,7 @@ namespace CodewarsScoreFinderTest
 			int optIndex = 0,
 			string optNewName = "optNewName")
 		{
+			//print list of filenames in project
 			//prompt for csv fileName
 			//prompt for userName
 			//find index of userName in csv file

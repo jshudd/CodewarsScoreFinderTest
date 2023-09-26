@@ -19,7 +19,7 @@ namespace CodewarsScoreFinderTest
 
 			while(tempUserName != "EXIT")
 			{
-				Console.WriteLine("Enter a username or type EXIT (all caps) to exit\n");
+				Console.WriteLine("Enter a username or type EXIT (all caps) to exit.\n");
 				tempUserName = Console.ReadLine();
 
 				if(tempUserName != "EXIT" || tempUserName != "")
@@ -47,8 +47,21 @@ namespace CodewarsScoreFinderTest
 
         public static string PromptFileName()
         {
-            //prompt for fileName
-            throw new NotImplementedException();
+			var temp = "";
+			var cont = true;
+
+			while (cont)
+			{
+				Console.WriteLine("Enter a filename.");
+				temp = Console.ReadLine();
+
+				if (temp == "")
+                    Console.WriteLine("Invalid entry. Please try again.\n");
+				else
+					cont = false;
+			}
+
+			return temp;
         }
 
         public static string PromptUserName()

@@ -57,6 +57,12 @@ namespace CodewarsScoreFinderTest
             throw new NotImplementedException();
         }
 
+        public static string PromptUserName()
+		{
+			//prompt for userName
+			throw new NotImplementedException();
+		}
+
 		public static void ReadCSV(string path)
 		{            
             var lines = File.ReadAllLines(path);

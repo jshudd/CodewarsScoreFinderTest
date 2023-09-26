@@ -14,12 +14,6 @@ namespace CodewarsScoreFinderTest
 
 		public static List<string> EnterUserNames()
 		{
-			//in while loop
-			//prompt user to enter username or type EXIT to exit
-			//add string to temp list
-			//repeat until user types EXIT
-			//return List<string>
-
 			var tempUserName = "";
 			var tempList = new List<string>();
 

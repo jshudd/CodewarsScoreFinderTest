@@ -127,4 +127,24 @@ public class CSVTests
 
         Assert.Equal("UserChanged", User.UsersList[0].Name);
     }
+
+    [Fact]
+    public void VerifyValidFileName_SUCCESS()
+    {
+        var tempFile = "C#4000";
+
+        var result = CSV.VerifyValidFileName(tempFile);
+
+        Assert.True(result);
+    }
+
+    [Fact]
+    public void VerifyValidFileName_FAIL()
+    {
+        var tempFile = "C#40";
+
+        var result = CSV.VerifyValidFileName(tempFile);
+
+        Assert.False(result);
+    }
 }

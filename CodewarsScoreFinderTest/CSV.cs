@@ -125,12 +125,15 @@ namespace CodewarsScoreFinderTest
 					return false;
 				}
 			}
-			else
-			{
-				Console.WriteLine("Folder does not exist.");
 
-				return false;
-			}
+			return false;
+
+			//else
+			//{
+			//	Console.WriteLine("Folder does not exist.");
+
+			//	return false;
+			//}
         }
 	}
 }

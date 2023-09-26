@@ -105,5 +105,32 @@ namespace CodewarsScoreFinderTest
 			//load updated UserList in same csv
 			throw new NotImplementedException();
 		}
+
+		public static bool VerifyValidFileName(string fileName)
+		{
+            string relativeFilePath = @"ClassLists";
+
+            string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeFilePath);
+
+			if (Directory.Exists(dirPath))
+			{
+				var fileNameList = Directory.GetFiles(dirPath).ToList();
+
+				if (!fileNameList.Contains(fileName))
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			else
+			{
+				Console.WriteLine("Folder does not exist.");
+
+				return false;
+			}
+        }
 	}
 }

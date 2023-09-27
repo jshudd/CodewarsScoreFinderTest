@@ -85,6 +85,28 @@ namespace CodewarsScoreFinderTest
 			}
         }
 
+		public static List<string>? RetrieveCSVFileNames()
+		{
+			List<string>? fileNameList;
+
+            string relativeFilePath = @"ClassLists";
+
+			string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeFilePath);
+
+			if (Directory.Exists(dirPath))
+			{
+				fileNameList = Directory.GetFiles(dirPath).ToList();
+			}
+			else
+			{
+				Console.WriteLine("CSV Folder not found.\n");
+				return null;
+			}
+
+			Console.WriteLine("CSV Files Found\n");
+			return fileNameList;
+		}
+
 		public static int SelectUserFromCSV(string userName)
 		{
 			throw new NotImplementedException();
@@ -96,14 +118,27 @@ namespace CodewarsScoreFinderTest
 			int optIndex = 0,
 			string optNewName = "optNewName")
 		{
-			//print list of filenames in project
+			//retrieve list of filenames in project
+			var fileNameList = RetrieveCSVFileNames();
+
 			//prompt for csv fileName
-			//prompt for userName
-			//find index of userName in csv file
-			//prompt for updated userName
-			//update username value in static UserList
-			//load updated UserList in same csv
-			throw new NotImplementedException();
+			optFileName = PromptFileName();
+
+			while (!VerifyValidFileName(optFileName))
+			{
+				Console.WriteLine("File not found. Please try again.\n");
+
+                optFileName = PromptFileName();
+            }
+
+			//read csv file contents
+			//display usernames
+            //prompt for userName
+            //find index of userName in csv file
+            //prompt for updated userName
+            //update username value in static UserList
+            //load updated UserList in same csv
+            throw new NotImplementedException();
 		}
 
 		public static bool VerifyValidFileName(string fileName)

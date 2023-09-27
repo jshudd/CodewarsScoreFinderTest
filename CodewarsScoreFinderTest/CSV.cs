@@ -154,7 +154,7 @@ namespace CodewarsScoreFinderTest
 
 		public static void UpdateUserInfo
 			(string optFileName = "optFileName",
-			string optUserName = "optUserName",
+			string search = "optUserName",
 			int optIndex = 0,
 			string optNewName = "optNewName")
 		{
@@ -185,16 +185,16 @@ namespace CodewarsScoreFinderTest
 			DisplayList(userNames);
 
 			//prompt for userName
-			var search = PromptUserName();
+			search = PromptUserName();
 
 			//find index of userName in list
-			var indexNum = userNames.IndexOf(search);
+			optIndex = userNames.IndexOf(search);
 
 			//prompt for updated userName
-			var newName = PromptNewUserName();
+			optNewName = PromptNewUserName();
 
 			//update username value in static UserList
-			User.UsersList[indexNum].Name = newName;
+			User.UsersList[optIndex].Name = optNewName;
 
             //load updated UserList in same csv
 		}

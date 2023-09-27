@@ -3,7 +3,8 @@ namespace CodewarsScoreFinderTest
 {
 	public static class CSV
 	{
-		public static string relativeDirPath = @"ClassLists";
+		private static string _relativeDirPath = @"ClassLists";
+        private static string _dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _relativeDirPath);
 
         public static void CreateCSV(List<User> optUsers = null, string optFileName = "optFileName")
 		{
@@ -129,13 +130,11 @@ namespace CodewarsScoreFinderTest
 		{
 			List<string>? fileNameList;
 
-            string relativeFilePath = @"ClassLists";
+			//string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeDirPath);
 
-			string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeFilePath);
-
-			if (Directory.Exists(dirPath))
+			if (Directory.Exists(_dirPath))
 			{
-				fileNameList = Directory.GetFiles(dirPath).ToList();
+				fileNameList = Directory.GetFiles(_dirPath).ToList();
 			}
 			else
 			{
@@ -174,7 +173,7 @@ namespace CodewarsScoreFinderTest
                 optFileName = PromptFileName();
             }
 
-			var newCSVPath = $"{relativeDirPath}/{optFileName}";
+			var newCSVPath = $"{_relativeDirPath}/{optFileName}";
 
             string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, newCSVPath);
 
@@ -203,11 +202,11 @@ namespace CodewarsScoreFinderTest
 		{
 			string csvName = $"{fileName}.csv";
 
-            string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeDirPath);
+            //string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeDirPath);
 
-			if (Directory.Exists(dirPath))
+			if (Directory.Exists(_dirPath))
 			{
-				var fileNameList = Directory.GetFiles(dirPath).ToList();
+				var fileNameList = Directory.GetFiles(_dirPath).ToList();
 
 				for (int i = 0; i < fileNameList.Count - 1; i++)
 				{

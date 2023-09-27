@@ -24,4 +24,11 @@
   <ItemGroup>
     <ProjectReference Include="..\CodewarsScoreFinderTest\CodewarsScoreFinderTest.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0\ClassLists\C#40.csv" />
+    <None Include="bin\Debug\net6.0\ClassLists\CodewarsTest.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\net6.0\ClassLists\" />
+  </ItemGroup>
 </Project>

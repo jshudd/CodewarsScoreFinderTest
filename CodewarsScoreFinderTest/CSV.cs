@@ -108,6 +108,8 @@ namespace CodewarsScoreFinderTest
 
 		public static bool VerifyValidFileName(string fileName)
 		{
+			string csvName = $"{fileName}.csv";
+
             string relativeFilePath = @"ClassLists";
 
             string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeFilePath);
@@ -116,17 +118,19 @@ namespace CodewarsScoreFinderTest
 			{
 				var fileNameList = Directory.GetFiles(dirPath).ToList();
 
-				return (!fileNameList.Any(x => x.Equals(fileName, StringComparison.OrdinalIgnoreCase)));
+				for (int i = 0; i < fileNameList.Count - 1; i++)
+				{
+					fileNameList[i] = Path.GetFileName(fileNameList[i]);
+				}
+
+				return !(fileNameList.Any(x => x.Equals(csvName, StringComparison.OrdinalIgnoreCase)));
 			}
+			else
+			{
+				Console.WriteLine("Folder does not exist.");
 
-			return false;
-
-			//else
-			//{
-			//	Console.WriteLine("Folder does not exist.");
-
-			//	return false;
-			//}
-        }
+				return false;
+			}
+		}
 	}
 }

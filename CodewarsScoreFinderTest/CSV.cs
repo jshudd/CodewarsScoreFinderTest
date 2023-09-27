@@ -8,7 +8,7 @@ namespace CodewarsScoreFinderTest
 
         public static void CreateCSV(List<User> optUsers = null, string optFileName = "optFileName")
 		{
-            //call method to ask user to enter usernames; store in variable
+            //call method to ask user to enter usernames; store in list
 			//call method to create filename for new file
             //call method to generate CSV file
 
@@ -22,7 +22,7 @@ namespace CodewarsScoreFinderTest
 
 			while(tempUserName != "EXIT")
 			{
-				Console.WriteLine("Enter a username or type EXIT (all caps) to exit.\n");
+				Console.WriteLine("Enter multiple usernames or type EXIT (all caps) to exit.\n");
 				tempUserName = Console.ReadLine();
 
 				if(tempUserName != "EXIT" || tempUserName != "")

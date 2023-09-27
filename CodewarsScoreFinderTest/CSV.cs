@@ -116,14 +116,7 @@ namespace CodewarsScoreFinderTest
 			{
 				var fileNameList = Directory.GetFiles(dirPath).ToList();
 
-				if (!fileNameList.Contains(fileName))
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
+				return (!fileNameList.Any(x => x.Equals(fileName, StringComparison.OrdinalIgnoreCase)));
 			}
 
 			return false;

@@ -3,7 +3,9 @@ namespace CodewarsScoreFinderTest
 {
 	public static class CSV
 	{
-		public static void CreateCSV(List<User> optUsers = null, string optFileName = "optFileName")
+		public static string relativeDirPath = @"ClassLists";
+
+        public static void CreateCSV(List<User> optUsers = null, string optFileName = "optFileName")
 		{
             //call method to ask user to enter usernames; store in variable
 			//call method to create filename for new file
@@ -40,6 +42,8 @@ namespace CodewarsScoreFinderTest
             throw new NotImplementedException();
         }
 
+		public static void DisplayList(List<string> fileNames) => fileNames.ForEach(Console.WriteLine);
+
         public static void GenerateCSV(string fileName, List<User> users)
 		{
 			throw new NotImplementedException();
@@ -66,11 +70,45 @@ namespace CodewarsScoreFinderTest
 
         public static string PromptUserName()
 		{
-			//prompt for userName
-			throw new NotImplementedException();
-		}
+            //prompt for userName
+            var temp = "";
+            var cont = true;
 
-		public static void ReadCSV(string path)
+            while (cont)
+            {
+                Console.WriteLine("Enter a username.");
+                temp = Console.ReadLine();
+
+                if (temp == "")
+                    Console.WriteLine("Invalid entry. Please try again.\n");
+                else
+                    cont = false;
+            }
+
+            return temp;
+        }
+
+		public static string PromptNewUserName()
+        {
+            //prompt for userName
+            var temp = "";
+            var cont = true;
+
+            while (cont)
+            {
+                Console.WriteLine("Enter a new username.");
+                temp = Console.ReadLine();
+
+                if (temp == "")
+                    Console.WriteLine("Invalid entry. Please try again.\n");
+                else
+                    cont = false;
+            }
+
+            return temp;
+        }
+
+        public static void ReadCSV(string path)
 		{            
             var lines = File.ReadAllLines(path);
 
@@ -85,7 +123,9 @@ namespace CodewarsScoreFinderTest
 			}
         }
 
-		public static List<string>? RetrieveCSVFileNames()
+        public static List<string> ReadCSVTemp(string path) => File.ReadAllLines(path).ToList();
+
+        public static List<string>? RetrieveCSVFileNames()
 		{
 			List<string>? fileNameList;
 
@@ -121,6 +161,9 @@ namespace CodewarsScoreFinderTest
 			//retrieve list of filenames in project
 			var fileNameList = RetrieveCSVFileNames();
 
+			DisplayList(fileNameList);
+			Console.WriteLine();
+
 			//prompt for csv fileName
 			optFileName = PromptFileName();
 
@@ -131,23 +174,36 @@ namespace CodewarsScoreFinderTest
                 optFileName = PromptFileName();
             }
 
-			//read csv file contents
+			var newCSVPath = $"{relativeDirPath}/{optFileName}";
+
+            string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, newCSVPath);
+
+            //read csv file contents
+            var userNames = ReadCSVTemp(dirPath);
+
 			//display usernames
-            //prompt for userName
-            //find index of userName in csv file
-            //prompt for updated userName
-            //update username value in static UserList
+			DisplayList(userNames);
+
+			//prompt for userName
+			var search = PromptUserName();
+
+			//find index of userName in list
+			var indexNum = userNames.IndexOf(search);
+
+			//prompt for updated userName
+			var newName = PromptNewUserName();
+
+			//update username value in static UserList
+			User.UsersList[indexNum].Name = newName;
+
             //load updated UserList in same csv
-            throw new NotImplementedException();
 		}
 
 		public static bool VerifyValidFileName(string fileName)
 		{
 			string csvName = $"{fileName}.csv";
 
-            string relativeFilePath = @"ClassLists";
-
-            string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeFilePath);
+            string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeDirPath);
 
 			if (Directory.Exists(dirPath))
 			{

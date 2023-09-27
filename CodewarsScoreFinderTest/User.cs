@@ -34,7 +34,6 @@ namespace CodewarsScoreFinderTest
 
 		public void ParseJSON()
 		{
-			//Name = JObject.Parse(JSON).GetValue("name").ToString();
 			try
 			{
 				Name = JObject.Parse(JSON).GetValue("name").ToString();

@@ -15,23 +15,19 @@ public class CSVTests
     [Fact]
     public void CreateCSVFile_SUCCESS()
     {
-        var userNames = new List<User>()
-        {
-            new User { UserName = "User1"},
-            new User { UserName = "User2"},
-            new User { UserName = "User3"}
-        };
+        var userNames = new List<string>() { "User1", "User2", "User3" };
 
         var fileName = "testCSV";
 
         // replace below call with individual methods
         CSV.CreateCSV(userNames, fileName);
 
-        string relativeFilePath = @"ClassLists/test.csv";
+        string relativeFilePath = @"ClassLists/testCSV.csv";
         string csvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeFilePath);
 
-        //Assert.NotNull(csvPath);
         Assert.True(File.Exists(csvPath));
+
+        //DeleteCSVFile(fileName);
     }
 
     [Fact]

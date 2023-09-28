@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Globalization;
+using System.Text;
+using CsvHelper;
+
 namespace CodewarsScoreFinderTest
 {
 	public static class CSV
@@ -6,13 +10,31 @@ namespace CodewarsScoreFinderTest
 		private static string _relativeDirPath = @"ClassLists";
         private static string _dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _relativeDirPath);
 
-        public static void CreateCSV(List<User> optUsers = null, string optFileName = "optFileName")
+        public static void CreateCSV(List<string>? tempList = null, string? optFileName = null)
 		{
-            //call method to ask user to enter usernames; store in list
-			//call method to create filename for new file
-            //call method to generate CSV file
+			if (tempList == null)
+			{
+				tempList = EnterUserNames();
+			}
 
-            throw new NotImplementedException();
+			if (optFileName == null)
+			{
+				optFileName = PromptFileName();
+			}
+
+			var filePath = $"{_dirPath}/{optFileName}.csv";
+
+			using (var writer = new StreamWriter(filePath, false, Encoding.UTF8))
+			{
+				foreach (var name in tempList)
+				{
+					writer.WriteLine($"{name},");
+				}
+			}
+
+			Console.WriteLine((!VerifyValidFileName(optFileName))
+				? $"New csv called {optFileName} created successfully."
+				: "New csv file creation unsuccessful");			
 		}
 
 		public static List<string> EnterUserNames()

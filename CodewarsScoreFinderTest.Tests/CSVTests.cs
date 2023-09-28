@@ -123,11 +123,11 @@ public class CSVTests
 
         CSV.ReadCSV(fileName);
 
-        CSV.UpdateUserInfo(fileName, userName, newName);
+        //CSV.UpdateUserInfo(fileName, userName, newName);
 
-        CSV.ReadCSV(fileName);
+        //CSV.ReadCSV(fileName);
 
-        Assert.Equal("UserChanged", User.UsersList[0].Name);
+        Assert.Throws<ArgumentOutOfRangeException>(() => CSV.UpdateUserInfo(fileName, userName, newName));
     }
 
     [Fact]

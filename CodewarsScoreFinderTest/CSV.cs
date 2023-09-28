@@ -318,7 +318,15 @@ namespace CodewarsScoreFinderTest
                 newName = PromptNewUserName();
 
             //update username value in static UserList
-            User.UsersList[index].Name = newName;
+            try
+            {
+                User.UsersList[index].Name = newName;
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Console.WriteLine($"User Name {search} not found.");
+                throw new ArgumentOutOfRangeException();
+            }
 
             //convert User.UsersList to list of strings userNames
             var tempList = CreateUserNameListFromUsers();

@@ -65,13 +65,15 @@ public class CSVTests
         CSV.CreateCSV(users, fileName);
 
         //hardcoding username for test
-        CSV.DeleteUserInCSV("User2");
+        CSV.DeleteUserInCSV(fileName, users[1]);
 
-        CSV.ReadCSV(fileName);
+        CSV.ReadCSV($"ClassLists/{fileName}.csv");
 
         Assert.Equal(2, User.UsersList.Count);
         Assert.Equal("User1", User.UsersList[0].Name);
         Assert.Equal("User3", User.UsersList[1].Name);
+
+        CSV.DeleteCSVFile(fileName);
     }
 
     [Fact]
@@ -84,6 +86,8 @@ public class CSVTests
         CSV.CreateCSV(users, fileName);
 
         Assert.Throws<UserNotFoundException>(() => CSV.DeleteUserInCSV("User4"));
+
+        CSV.DeleteCSVFile(fileName);
     }
 
     [Fact]

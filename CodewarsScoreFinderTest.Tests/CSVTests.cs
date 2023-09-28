@@ -101,6 +101,8 @@ public class CSVTests
 
         CSV.CreateCSV(users, fileName);
 
+        CSV.ReadCSV(fileName);
+
         CSV.UpdateUserInfo(fileName, userName, 0, newName);
 
         CSV.ReadCSV(fileName);

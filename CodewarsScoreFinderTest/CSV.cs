@@ -69,6 +69,18 @@ namespace CodewarsScoreFinderTest
             return tempList;
         }
 
+        public static List<string> CreateUserNameListFromUsers()
+        {
+            var tempList = new List<string>();
+
+            foreach (var user in User.UsersList)
+            {
+                tempList.Add(user.Name);
+            }
+
+            return tempList;
+        }
+
         public static void DeleteCSVFile(string fileName)
         {
             var path = $"{_dirPath}/{fileName}.csv";
@@ -107,7 +119,7 @@ namespace CodewarsScoreFinderTest
             }
 
             //add all usernames to list
-            var userList = ReadCSVTemp($"ClassLists/{fileName}.csv");
+            var userList = ReadCSVTemp(fileName);
 
             //display all usernames
             Console.WriteLine("Users\n");
@@ -131,11 +143,6 @@ namespace CodewarsScoreFinderTest
         }
 
         public static void DisplayList(List<string> fileNames) => fileNames.ForEach(Console.WriteLine);
-
-        //      public static void GenerateCSV(string fileName, List<User> users)
-        //{
-        //	throw new NotImplementedException();
-        //      }
 
         public static string PromptFileName()
         {
@@ -198,7 +205,11 @@ namespace CodewarsScoreFinderTest
 
         public static void ReadCSV(string path)
         {
-            var lines = File.ReadAllLines(path);
+            var newCSVPath = $"{_relativeDirPath}/{path}.csv";
+
+            string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, newCSVPath);
+
+            var lines = File.ReadAllLines(dirPath);
 
             foreach (var user in lines)
             {
@@ -213,7 +224,11 @@ namespace CodewarsScoreFinderTest
 
         public static List<string> ReadCSVTemp(string path)
         {
-            var list = File.ReadAllLines(path).ToList();
+            var newCSVPath = $"{_relativeDirPath}/{path}.csv";
+
+            string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, newCSVPath);
+
+            var list = File.ReadAllLines(dirPath).ToList();
 
             for (int i = 0; i < list.Count; i++)
             {
@@ -226,8 +241,6 @@ namespace CodewarsScoreFinderTest
         public static List<string>? RetrieveCSVFileNames()
         {
             List<string>? fileNameList;
-
-            //string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeDirPath);
 
             if (Directory.Exists(_dirPath))
             {
@@ -249,10 +262,10 @@ namespace CodewarsScoreFinderTest
         }
 
         public static void UpdateUserInfo
-            (string optFileName = "optFileName",
+            (string fileName = "optFileName",
             string search = "optUserName",
-            int optIndex = 0,
-            string optNewName = "optNewName")
+            int index = -1,
+            string newName = "optNewName")
         {
             //retrieve list of filenames in project
             var fileNameList = RetrieveCSVFileNames();
@@ -261,38 +274,47 @@ namespace CodewarsScoreFinderTest
             Console.WriteLine();
 
             //prompt for csv fileName
-            optFileName = PromptFileName();
 
-            while (!VerifyValidFileName(optFileName))
+            if (fileName == "optFileName")
+                fileName = PromptFileName();
+
+            while (!VerifyValidFileName(fileName))
             {
                 Console.WriteLine("File not found. Please try again.\n");
 
-                optFileName = PromptFileName();
+                fileName = PromptFileName();
             }
 
-            var newCSVPath = $"{_relativeDirPath}/{optFileName}";
+            //var newCSVPath = $"{_relativeDirPath}/{fileName}.csv";
 
-            string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, newCSVPath);
+            //string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, newCSVPath);
 
             //read csv file contents
-            var userNames = ReadCSVTemp(dirPath);
+            var userNames = ReadCSVTemp(fileName);
 
             //display usernames
             DisplayList(userNames);
 
             //prompt for userName
+            if (search == "optUserName")
             search = PromptUserName();
 
             //find index of userName in list
-            optIndex = userNames.IndexOf(search);
+            if (index == -1)
+            index = userNames.IndexOf(search);
 
             //prompt for updated userName
-            optNewName = PromptNewUserName();
+            if (newName == "optNewName")
+            newName = PromptNewUserName();
 
             //update username value in static UserList
-            User.UsersList[optIndex].Name = optNewName;
+            User.UsersList[index].Name = newName;
+
+            //convert User.UsersList to list of strings userNames
+            var tempList = CreateUserNameListFromUsers();
 
             //load updated UserList in same csv
+            CreateCSV(tempList, fileName);
         }
 
         public static bool VerifyValidFileName(string fileName)

@@ -264,7 +264,7 @@ namespace CodewarsScoreFinderTest
         public static void UpdateUserInfo
             (string fileName = "optFileName",
             string search = "optUserName",
-            int index = -1,
+            //int index = -1,
             string newName = "optNewName")
         {
             //retrieve list of filenames in project
@@ -300,8 +300,8 @@ namespace CodewarsScoreFinderTest
             search = PromptUserName();
 
             //find index of userName in list
-            if (index == -1)
-            index = userNames.IndexOf(search);
+            //if (index == -1)
+            var index = userNames.IndexOf(search);
 
             //prompt for updated userName
             if (newName == "optNewName")

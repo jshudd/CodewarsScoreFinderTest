@@ -103,7 +103,48 @@ public class CSVTests
 
         CSV.ReadCSV(fileName);
 
-        CSV.UpdateUserInfo(fileName, userName, 0, newName);
+        CSV.UpdateUserInfo(fileName, userName, newName);
+
+        CSV.ReadCSV(fileName);
+
+        Assert.Equal("UserChanged", User.UsersList[0].Name);
+    }
+
+    [Fact]
+    public void UpdateUserInCSV_UserNameNotFound()
+    {
+        var users = new List<string>() { "User1", "User2", "User3" };
+
+        var fileName = "testCSV";
+        var userName = "User4";
+        var newName = "UserChanged";
+
+        CSV.CreateCSV(users, fileName);
+
+        CSV.ReadCSV(fileName);
+
+        CSV.UpdateUserInfo(fileName, userName, newName);
+
+        CSV.ReadCSV(fileName);
+
+        Assert.Equal("UserChanged", User.UsersList[0].Name);
+    }
+
+    [Fact]
+    public void UpdateUserInCSV_CSVFileNameNotFound()
+    {
+        var users = new List<string>() { "User1", "User2", "User3" };
+
+        var fileName = "testCSV";
+        var wrongFileName = "wrongCSV";
+        var userName = "User4";
+        var newName = "UserChanged";
+
+        CSV.CreateCSV(users, fileName);
+
+        CSV.ReadCSV(fileName);
+
+        CSV.UpdateUserInfo(wrongFileName, userName, newName);
 
         CSV.ReadCSV(fileName);
 

@@ -19,15 +19,12 @@ public class CSVTests
 
         var fileName = "testCSV";
 
-        // replace below call with individual methods
         CSV.CreateCSV(userNames, fileName);
 
         string relativeFilePath = @"ClassLists/testCSV.csv";
         string csvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeFilePath);
 
         Assert.True(File.Exists(csvPath));
-
-        //DeleteCSVFile(fileName);
     }
 
     [Fact]
@@ -122,10 +119,6 @@ public class CSVTests
         CSV.CreateCSV(users, fileName);
 
         CSV.ReadCSV(fileName);
-
-        //CSV.UpdateUserInfo(fileName, userName, newName);
-
-        //CSV.ReadCSV(fileName);
 
         Assert.Throws<ArgumentOutOfRangeException>(() => CSV.UpdateUserInfo(fileName, userName, newName));
     }

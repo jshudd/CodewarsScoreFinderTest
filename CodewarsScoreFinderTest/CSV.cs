@@ -12,6 +12,8 @@ namespace CodewarsScoreFinderTest
 
         public static void CreateCSV(List<string>? tempList = null, string? optFileName = null)
 		{
+			var answer = "";
+
 			if (tempList == null)
 			{
 				tempList = EnterUserNames();
@@ -19,6 +21,19 @@ namespace CodewarsScoreFinderTest
 
 			if (optFileName == null)
 			{
+				optFileName = PromptFileName();
+			}
+
+			while (!VerifyValidFileName(optFileName))
+			{
+				Console.WriteLine("Filename is already taken. Do you want to overwrite? Y or N?.\n");
+				answer = Console.ReadLine();
+
+                if (answer.ToLower() == "n")
+				{
+					break;
+				}
+
 				optFileName = PromptFileName();
 			}
 

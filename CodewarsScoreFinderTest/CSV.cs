@@ -85,9 +85,9 @@ namespace CodewarsScoreFinderTest
         {
             var path = $"{_dirPath}/{fileName}.csv";
 
-            //try
-            //{
-            if (File.Exists(path))
+            try
+            {
+                if (File.Exists(path))
             {
                 File.Delete(path);
                 Console.WriteLine($"File {path}.csv has been deleted successfully.");
@@ -97,11 +97,12 @@ namespace CodewarsScoreFinderTest
                 Console.WriteLine($"File {path}.csv could not be found.");
                 throw new FileNotFoundException();
             }
-            //}
-            //catch (FileNotFoundException ex)
-            //{
-            //    Console.WriteLine($"An error occurred: {ex.Message}");
-            //}
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                throw new FileNotFoundException();
+            }
         }
 
         public static void DeleteUserInCSV(string? fileName = null, string? userName = null)
@@ -138,7 +139,6 @@ namespace CodewarsScoreFinderTest
             //userList.RemoveAt(indexNum - 1);
             userList.Remove(userName);
 
-            //overwrite csv file with updated list; CSV.CreateCSV()
             CreateCSV(userList, fileName);
         }
 
@@ -165,7 +165,6 @@ namespace CodewarsScoreFinderTest
 
         public static string PromptUserName()
         {
-            //prompt for userName
             var temp = "";
             var cont = true;
 
@@ -185,7 +184,6 @@ namespace CodewarsScoreFinderTest
 
         public static string PromptNewUserName()
         {
-            //prompt for userName
             var temp = "";
             var cont = true;
 
@@ -234,7 +232,7 @@ namespace CodewarsScoreFinderTest
             {
                 list = File.ReadAllLines(dirPath).ToList();
             }
-            catch (FileNotFoundException ex)
+            catch (FileNotFoundException)
             {
                 Console.WriteLine($"File {path} not found.");
                 throw new FileNotFoundException();
@@ -274,16 +272,13 @@ namespace CodewarsScoreFinderTest
         public static void UpdateUserInfo
             (string fileName = "optFileName",
             string search = "optUserName",
-            //int index = -1,
             string newName = "optNewName")
         {
-            //retrieve list of filenames in project
             var fileNameList = RetrieveCSVFileNames();
 
             DisplayList(fileNameList);
             Console.WriteLine();
 
-            //prompt for csv fileName
 
             if (fileName == "optFileName")
                 fileName = PromptFileName();
@@ -295,29 +290,18 @@ namespace CodewarsScoreFinderTest
                 fileName = PromptFileName();
             }
 
-            //var newCSVPath = $"{_relativeDirPath}/{fileName}.csv";
-
-            //string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, newCSVPath);
-
-            //read csv file contents
             var userNames = ReadCSVTemp(fileName);
 
-            //display usernames
             DisplayList(userNames);
 
-            //prompt for userName
             if (search == "optUserName")
                 search = PromptUserName();
 
-            //find index of userName in list
-            //if (index == -1)
             var index = userNames.IndexOf(search);
 
-            //prompt for updated userName
             if (newName == "optNewName")
                 newName = PromptNewUserName();
 
-            //update username value in static UserList
             try
             {
                 User.UsersList[index].Name = newName;
@@ -328,10 +312,8 @@ namespace CodewarsScoreFinderTest
                 throw new ArgumentOutOfRangeException();
             }
 
-            //convert User.UsersList to list of strings userNames
             var tempList = CreateUserNameListFromUsers();
 
-            //load updated UserList in same csv
             CreateCSV(tempList, fileName);
         }
 

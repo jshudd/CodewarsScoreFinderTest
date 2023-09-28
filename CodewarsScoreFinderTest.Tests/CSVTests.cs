@@ -131,7 +131,7 @@ public class CSVTests
     }
 
     [Fact]
-    public void UpdateUserInCSV_CSVFileNameNotFound()
+    public void UpdateUserInCSV_CSVFileNotFound()
     {
         var users = new List<string>() { "User1", "User2", "User3" };
 
@@ -144,11 +144,7 @@ public class CSVTests
 
         CSV.ReadCSV(fileName);
 
-        CSV.UpdateUserInfo(wrongFileName, userName, newName);
-
-        CSV.ReadCSV(fileName);
-
-        Assert.Equal("UserChanged", User.UsersList[0].Name);
+        Assert.Throws<FileNotFoundException>(() => CSV.UpdateUserInfo(wrongFileName, userName, newName));
     }
 
     [Fact]

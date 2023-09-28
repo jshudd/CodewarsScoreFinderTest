@@ -228,7 +228,17 @@ namespace CodewarsScoreFinderTest
 
             string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, newCSVPath);
 
-            var list = File.ReadAllLines(dirPath).ToList();
+            var list = new List<string>();
+
+            try
+            {
+                list = File.ReadAllLines(dirPath).ToList();
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine($"File {path} not found.");
+                throw new FileNotFoundException();
+            }
 
             for (int i = 0; i < list.Count; i++)
             {
@@ -297,7 +307,7 @@ namespace CodewarsScoreFinderTest
 
             //prompt for userName
             if (search == "optUserName")
-            search = PromptUserName();
+                search = PromptUserName();
 
             //find index of userName in list
             //if (index == -1)
@@ -305,7 +315,7 @@ namespace CodewarsScoreFinderTest
 
             //prompt for updated userName
             if (newName == "optNewName")
-            newName = PromptNewUserName();
+                newName = PromptNewUserName();
 
             //update username value in static UserList
             User.UsersList[index].Name = newName;

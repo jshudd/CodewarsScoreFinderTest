@@ -9,7 +9,7 @@ public class CSVTests
 
         string csvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeFilePath);
 
-        Assert.Throws<FileNotFoundException>(() => CSV.ReadCSV(csvPath));
+        Assert.Throws<DirectoryNotFoundException>(() => CSV.ReadCSV(csvPath));
     }
 
     [Fact]

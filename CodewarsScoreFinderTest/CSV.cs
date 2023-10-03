@@ -203,6 +203,7 @@ namespace CodewarsScoreFinderTest
 
         public static void ReadCSV(string path)
         {
+            //var newCSVPath = $"{_relativeDirPath}/{path}";
             var newCSVPath = $"{_relativeDirPath}/{path}.csv";
 
             string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, newCSVPath);

@@ -5,7 +5,7 @@ public class CSVTests
     [Fact]
     public void CSVFileNotFound()
     {
-        string relativeFilePath = @"ClassLists/C#4.csv";
+        string relativeFilePath = @"ClassLists/C#4";
 
         string csvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeFilePath);
 
@@ -38,7 +38,7 @@ public class CSVTests
 
         CSV.DeleteCSVFile(fileName);
 
-        string relativeFilePath = @"ClassLists/testCSV.csv";
+        string relativeFilePath = @"ClassLists/testCSV";
         string csvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeFilePath);
 
         Assert.False(File.Exists(csvPath));
@@ -64,7 +64,7 @@ public class CSVTests
         //hardcoding username for test
         CSV.DeleteUserInCSV(fileName, users[1]);
 
-        CSV.ReadCSV($"ClassLists/{fileName}.csv");
+        CSV.ReadCSV($"ClassLists/{fileName}");
 
         Assert.Equal(2, User.UsersList.Count);
         Assert.Equal("User1", User.UsersList[0].Name);

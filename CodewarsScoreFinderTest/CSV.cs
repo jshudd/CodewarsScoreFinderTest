@@ -147,6 +147,14 @@ namespace CodewarsScoreFinderTest
             CreateCSV(userList, fileName);
         }
 
+        public static void DisplayCSVFiles()
+        {
+            var fileList = RetrieveCSVFileNames();
+
+            fileList.ForEach(Console.WriteLine);
+            Console.WriteLine();
+        }
+
         public static void DisplayList(List<string> fileNames) => fileNames.ForEach(Console.WriteLine);
 
         public static string PromptFileName()

@@ -90,17 +90,17 @@ namespace CodewarsScoreFinderTest
                 if (File.Exists(path))
             {
                 File.Delete(path);
-                Console.WriteLine($"File {path}.csv has been deleted successfully.");
+                Console.WriteLine($"File {Path.GetFileNameWithoutExtension(path)} has been deleted successfully.\n");
             }
             else
             {
-                Console.WriteLine($"File {path}.csv could not be found.");
+                Console.WriteLine($"File {path}.csv could not be found.\n");
                 throw new FileNotFoundException();
             }
             }
             catch (FileNotFoundException ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                Console.WriteLine($"An error occurred: {ex.Message}\n");
                 throw new FileNotFoundException();
             }
         }
@@ -151,7 +151,10 @@ namespace CodewarsScoreFinderTest
         {
             var fileList = RetrieveCSVFileNames();
 
-            fileList.ForEach(Console.WriteLine);
+            for (int i = 0; i < fileList.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}: {fileList[i]}");
+            }
             Console.WriteLine();
         }
 
@@ -289,6 +292,12 @@ namespace CodewarsScoreFinderTest
             }
 
             Console.WriteLine("CSV Files Found\n");
+
+            for (int i = 0; i < fileNameList.Count; i++)
+            {
+                fileNameList[i] = Path.GetFileNameWithoutExtension(fileNameList[i]);
+            }
+
             return fileNameList;
         }
 

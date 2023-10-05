@@ -27,6 +27,7 @@
   <ItemGroup>
     <None Include="bin\Debug\net6.0\ClassLists\C#40.csv" />
     <None Include="bin\Debug\net6.0\ClassLists\CodewarsTest.csv" />
+    <None Include="bin\Debug\net6.0\ClassLists\testCSV.csv" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\net6.0\ClassLists\" />

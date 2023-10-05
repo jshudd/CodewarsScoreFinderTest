@@ -137,6 +137,11 @@ namespace CodewarsScoreFinderTest
 
             //remove user from list
             //userList.RemoveAt(indexNum - 1);
+            if (!userList.Contains(userName))
+            {
+                throw new UserNotFoundException();
+            }
+            
             userList.Remove(userName);
 
             CreateCSV(userList, fileName);
@@ -208,7 +213,9 @@ namespace CodewarsScoreFinderTest
 
             string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, newCSVPath);
 
-            var lines = File.ReadAllLines(dirPath);
+            var lines = File.ReadAllLines(dirPath).ToList();
+
+            lines = RemoveCommas(lines);
 
             foreach (var user in lines)
             {
@@ -239,6 +246,18 @@ namespace CodewarsScoreFinderTest
                 throw new FileNotFoundException();
             }
 
+            //for (int i = 0; i < list.Count; i++)
+            //{
+            //    list[i] = list[i].TrimEnd(',');
+            //}
+
+            //return list;
+
+            return RemoveCommas(list);
+        }
+
+        public static List<string> RemoveCommas(List<string> list)
+        {
             for (int i = 0; i < list.Count; i++)
             {
                 list[i] = list[i].TrimEnd(',');

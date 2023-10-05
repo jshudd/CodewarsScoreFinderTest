@@ -25,6 +25,8 @@ public class CSVTests
         string csvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativeFilePath);
 
         Assert.True(File.Exists(csvPath));
+
+        CSV.DeleteCSVFile(fileName);
     }
 
     [Fact]
@@ -64,12 +66,14 @@ public class CSVTests
         //hardcoding username for test
         CSV.DeleteUserInCSV(fileName, users[1]);
 
-        CSV.ReadCSV($"ClassLists/{fileName}");
+        CSV.ReadCSV(fileName);
+        //CSV.ReadCSV($"ClassLists/{fileName}");
 
         Assert.Equal(2, User.UsersList.Count);
-        Assert.Equal("User1", User.UsersList[0].Name);
-        Assert.Equal("User3", User.UsersList[1].Name);
+        Assert.Equal("User1", User.UsersList[0].UserName);
+        Assert.Equal("User3", User.UsersList[1].UserName);
 
+        User.UsersList.Clear();
         CSV.DeleteCSVFile(fileName);
     }
 
@@ -82,7 +86,7 @@ public class CSVTests
 
         CSV.CreateCSV(users, fileName);
 
-        Assert.Throws<UserNotFoundException>(() => CSV.DeleteUserInCSV("User4"));
+        Assert.Throws<UserNotFoundException>(() => CSV.DeleteUserInCSV(fileName, "User4"));
 
         CSV.DeleteCSVFile(fileName);
     }
@@ -105,6 +109,9 @@ public class CSVTests
         CSV.ReadCSV(fileName);
 
         Assert.Equal("UserChanged", User.UsersList[0].Name);
+
+        User.UsersList.Clear();
+        CSV.DeleteCSVFile(fileName);
     }
 
     [Fact]
@@ -121,6 +128,9 @@ public class CSVTests
         CSV.ReadCSV(fileName);
 
         Assert.Throws<ArgumentOutOfRangeException>(() => CSV.UpdateUserInfo(fileName, userName, newName));
+
+        User.UsersList.Clear();
+        CSV.DeleteCSVFile(fileName);
     }
 
     [Fact]
@@ -138,6 +148,9 @@ public class CSVTests
         CSV.ReadCSV(fileName);
 
         Assert.Throws<FileNotFoundException>(() => CSV.UpdateUserInfo(wrongFileName, userName, newName));
+
+        User.UsersList.Clear();
+        CSV.DeleteCSVFile(fileName);
     }
 
     [Fact]

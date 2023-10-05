@@ -52,7 +52,6 @@ namespace CodewarsScoreFinderTest
 
 		public static void DeleteFileMenu()
 		{
-			//Console.WriteLine("Nothing happens yet. So sorry :-(");
 			CSV.DisplayCSVFiles();
 
 			Console.WriteLine("Enter a filename to delete:");

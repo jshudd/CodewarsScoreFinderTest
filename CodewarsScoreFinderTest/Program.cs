@@ -16,5 +16,13 @@
 //User.DisplayListHighScore();
 
 // New Implementation
+
+var isTrue = true;
+
 Console.WriteLine("Codewars Score Finder\n");
 
+do
+{
+    UI.MainMenu();
+
+} while (isTrue);

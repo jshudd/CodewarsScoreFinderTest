@@ -80,6 +80,8 @@ namespace CodewarsScoreFinderTest.Tests
         [Fact]
         public void UserListPopulated_SUCCESS()
         {
+            User.UsersList.Clear();
+
             var user1 = new User()
             {
                 UserName = "jshudd"

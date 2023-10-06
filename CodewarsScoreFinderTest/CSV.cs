@@ -24,6 +24,7 @@ namespace CodewarsScoreFinderTest
 
         public static void CreateCSV(List<string>? tempList = null, string? optFileName = null)
         {
+            Console.WriteLine("Creating new CSV file.");
             var answer = "";
 
             if (tempList == null)
@@ -41,12 +42,12 @@ namespace CodewarsScoreFinderTest
                 Console.WriteLine("Filename is already taken. Do you want to overwrite? Y or N?.\n");
                 answer = Console.ReadLine();
 
-                if (answer.ToLower() == "n")
+                if (answer.ToLower() == "y")
                 {
                     break;
                 }
 
-                optFileName = PromptFileName();
+                optFileName = PromptNewFileName();
             }
 
             var filePath = $"{_dirPath}/{optFileName}.csv";
@@ -166,7 +167,7 @@ namespace CodewarsScoreFinderTest
 
         public static void DisplayList(List<string> fileNames) => fileNames.ForEach(Console.WriteLine);
 
-        public static void DisplayUsernamesFromFile() => User.UsersList.ForEach(x => Console.WriteLine(x.ToString()));
+        public static void DisplayUsernamesFromFile() => User.UsersList.ForEach(x => Console.WriteLine(x.UserName));
 
         public static string PromptFileName()
         {
@@ -175,7 +176,26 @@ namespace CodewarsScoreFinderTest
 
             while (cont)
             {
-                Console.WriteLine("Enter a Filename.");
+                Console.WriteLine("Enter a Filename for CSV file.");
+                temp = Console.ReadLine();
+
+                if (temp == "")
+                    Console.WriteLine("Invalid entry. Please try again.\n");
+                else
+                    cont = false;
+            }
+
+            return temp;
+        }
+
+        public static string PromptNewFileName()
+        {
+            var temp = "";
+            var cont = true;
+
+            while (cont)
+            {
+                Console.WriteLine("Enter a New Filename for CSV file.");
                 temp = Console.ReadLine();
 
                 if (temp == "")

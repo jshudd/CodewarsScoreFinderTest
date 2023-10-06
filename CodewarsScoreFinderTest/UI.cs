@@ -10,7 +10,7 @@ namespace CodewarsScoreFinderTest
             Console.WriteLine("Type the number to make a selection:\n");
 
             Console.WriteLine("1: Display all Class Files");
-            Console.WriteLine("2: Select a Class File");
+            Console.WriteLine("2: Select a Class File to show Scores");
             Console.WriteLine("3: Create a new Class File");
             Console.WriteLine("4: Edit a Class File");
             Console.WriteLine("5: Delete a Class File");
@@ -106,6 +106,7 @@ namespace CodewarsScoreFinderTest
             do
             {
                 Console.WriteLine($"CSV File {fileName} Selected.");
+                Console.WriteLine();
 
                 Console.WriteLine("Type the number to make a selection:\n");
 
@@ -124,6 +125,7 @@ namespace CodewarsScoreFinderTest
                     case 1:
                         CSV.ReadCSV(fileName);
                         CSV.DisplayUsernamesFromFile();
+                        Console.WriteLine();
                         break;
                     case 2:
                         CSV.AddNewUserName();

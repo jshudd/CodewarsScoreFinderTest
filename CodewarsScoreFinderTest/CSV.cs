@@ -122,36 +122,26 @@ namespace CodewarsScoreFinderTest
 
         public static void DeleteUserInCSV(string? fileName = null, string? userName = null)
         {
-            //display all csv files
             var files = RetrieveCSVFileNames();
 
             Console.WriteLine("CSV Files\n");
             DisplayList(files);
 
-            //user selects csv file
             if (fileName == null)
             {
                 fileName = PromptFileName();
             }
 
-            //add all usernames to list
             var userList = ReadCSVTemp(fileName);
 
-            //display all usernames
             Console.WriteLine("Users\n");
             DisplayList(userList);
 
-            //app user selects user to delete from file
             if (userName == null)
             {
                 userName = Console.ReadLine();
             }
 
-            //get index of userName
-            //var indexNum = userList.IndexOf(userName);
-
-            //remove user from list
-            //userList.RemoveAt(indexNum - 1);
             if (!userList.Contains(userName))
             {
                 throw new UserNotFoundException();

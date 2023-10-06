@@ -122,10 +122,10 @@ namespace CodewarsScoreFinderTest
 
         public static void DeleteUserInCSV(string? fileName = null, string? userName = null)
         {
-            var files = RetrieveCSVFileNames();
+            //var files = RetrieveCSVFileNames();
 
-            Console.WriteLine("CSV Files\n");
-            DisplayList(files);
+            //Console.WriteLine("CSV Files\n");
+            //DisplayList(files);
 
             if (fileName == null)
             {
@@ -139,11 +139,12 @@ namespace CodewarsScoreFinderTest
 
             if (userName == null)
             {
-                userName = Console.ReadLine();
+                userName = PromptUserNameToDelete();
             }
 
             if (!userList.Contains(userName))
             {
+                Console.WriteLine("Username not found.");
                 throw new UserNotFoundException();
             }
             
@@ -194,6 +195,25 @@ namespace CodewarsScoreFinderTest
             while (cont)
             {
                 Console.WriteLine("Enter a Username.");
+                temp = Console.ReadLine();
+
+                if (temp == "")
+                    Console.WriteLine("Invalid entry. Please try again.\n");
+                else
+                    cont = false;
+            }
+
+            return temp;
+        }
+
+        public static string PromptUserNameToDelete()
+        {
+            var temp = "";
+            var cont = true;
+
+            while (cont)
+            {
+                Console.WriteLine("Enter a Username to Delete.");
                 temp = Console.ReadLine();
 
                 if (temp == "")

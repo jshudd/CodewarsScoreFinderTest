@@ -10,6 +10,18 @@ namespace CodewarsScoreFinderTest
         private static string _relativeDirPath = @"ClassLists";
         private static string _dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _relativeDirPath);
 
+        public static void AddNewUserName()
+        {
+            var userInput = PromptNewUserName();
+            Console.WriteLine();
+
+            var newUser = new User() { UserName = userInput };
+
+            User.UsersList.Add(newUser);
+
+            Console.WriteLine($"New Username {newUser.UserName} added to file.\n");
+        }
+
         public static void CreateCSV(List<string>? tempList = null, string? optFileName = null)
         {
             var answer = "";

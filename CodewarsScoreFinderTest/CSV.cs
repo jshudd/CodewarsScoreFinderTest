@@ -335,12 +335,6 @@ namespace CodewarsScoreFinderTest
             string search = "optUserName",
             string newName = "optNewName")
         {
-            //var fileNameList = RetrieveCSVFileNames();
-
-            //DisplayList(fileNameList);
-            //Console.WriteLine();
-
-
             if (fileName == "optFileName")
                 fileName = PromptFileName();
 

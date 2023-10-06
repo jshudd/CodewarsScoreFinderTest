@@ -134,7 +134,7 @@ namespace CodewarsScoreFinderTest
                         CSV.UpdateUserInfo(fileName);
                         break;
                     case 4:
-                        throw new NotImplementedException();
+                        CSV.DeleteUserInCSV(fileName);
                         break;
                     case 5:
                         cont = false;

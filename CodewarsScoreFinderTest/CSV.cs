@@ -163,6 +163,8 @@ namespace CodewarsScoreFinderTest
 
         public static void DisplayList(List<string> fileNames) => fileNames.ForEach(Console.WriteLine);
 
+        public static void DisplayUsernamesFromFile() => User.UsersList.ForEach(x => Console.WriteLine(x.ToString()));
+
         public static string PromptFileName()
         {
             var temp = "";

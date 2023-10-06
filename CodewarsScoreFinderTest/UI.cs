@@ -131,7 +131,7 @@ namespace CodewarsScoreFinderTest
                         CSV.CreateCSV(tempList, fileName);
                         break;
                     case 3:
-                        throw new NotImplementedException();
+                        CSV.UpdateUserInfo(fileName);
                         break;
                     case 4:
                         throw new NotImplementedException();

@@ -109,6 +109,8 @@ public class CSVTests
         CSV.ReadCSV(fileName);
 
         Assert.Equal("UserChanged", User.UsersList[0].Name);
+        Assert.Equal("User2", User.UsersList[1].Name);
+        Assert.Equal("User3", User.UsersList[2].Name);
 
         User.UsersList.Clear();
         CSV.DeleteCSVFile(fileName);

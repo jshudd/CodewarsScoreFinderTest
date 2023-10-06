@@ -123,19 +123,26 @@ namespace CodewarsScoreFinderTest
                 switch (userInput)
                 {
                     case 1:
+                        User.UsersList.Clear();
                         CSV.ReadCSV(fileName);
                         CSV.DisplayUsernamesFromFile();
                         Console.WriteLine();
                         break;
                     case 2:
+                        User.UsersList.Clear();
+                        CSV.ReadCSV(fileName);
                         CSV.AddNewUserName();
                         var tempList = CSV.CreateUserNameListFromUsers();
                         CSV.CreateCSV(tempList, fileName);
                         break;
                     case 3:
+                        User.UsersList.Clear();
+                        CSV.ReadCSV(fileName);
                         CSV.UpdateUserInfo(fileName);
                         break;
                     case 4:
+                        User.UsersList.Clear();
+                        CSV.ReadCSV(fileName);
                         CSV.DeleteUserInCSV(fileName);
                         break;
                     case 5:

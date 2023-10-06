@@ -24,7 +24,7 @@ namespace CodewarsScoreFinderTest
 
         public static void CreateCSV(List<string>? tempList = null, string? optFileName = null)
         {
-            Console.WriteLine("Creating new CSV file.");
+            Console.WriteLine("Creating new CSV file.\n");
             var answer = "";
 
             if (tempList == null)
@@ -39,7 +39,7 @@ namespace CodewarsScoreFinderTest
 
             while (!VerifyValidFileName(optFileName))
             {
-                Console.WriteLine("Filename is already taken. Do you want to overwrite? Y or N?.\n");
+                Console.WriteLine("Filename is already taken. Do you want to overwrite? Y or N?.");
                 answer = Console.ReadLine();
 
                 if (answer.ToLower() == "y")
@@ -61,8 +61,8 @@ namespace CodewarsScoreFinderTest
             }
 
             Console.WriteLine((!VerifyValidFileName(optFileName))
-                ? $"New csv called {optFileName} created successfully."
-                : "New csv file creation unsuccessful");
+                ? $"New csv called {optFileName} created successfully.\n"
+                : "New csv file creation unsuccessful.\n");
         }
 
         public static List<string> EnterUserNames()
@@ -176,7 +176,7 @@ namespace CodewarsScoreFinderTest
 
             while (cont)
             {
-                Console.WriteLine("Enter a Filename for CSV file.");
+                Console.WriteLine("Enter a Filename for csv file.");
                 temp = Console.ReadLine();
 
                 if (temp == "")
@@ -195,7 +195,7 @@ namespace CodewarsScoreFinderTest
 
             while (cont)
             {
-                Console.WriteLine("Enter a New Filename for CSV file.");
+                Console.WriteLine("Enter a New Filename for csv file.");
                 temp = Console.ReadLine();
 
                 if (temp == "")
@@ -394,7 +394,7 @@ namespace CodewarsScoreFinderTest
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                Console.WriteLine($"User Name {search} not found.\n");
+                Console.WriteLine($"Username {search} not found.\n");
                 throw new ArgumentOutOfRangeException();
             }
 

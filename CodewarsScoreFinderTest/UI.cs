@@ -32,7 +32,7 @@ namespace CodewarsScoreFinderTest
                     CreateFileMenu();
                     break;
                 case 4:
-                    EditFileMenu();
+                    ChooseFileToEditMenu();
                     break;
                 case 5:
                     DeleteFileMenu();
@@ -41,6 +41,7 @@ namespace CodewarsScoreFinderTest
                     Environment.Exit(0);
                     break;
                 default:
+                    MainMenu();
                     break;
             }
         }
@@ -69,9 +70,16 @@ namespace CodewarsScoreFinderTest
             CSV.DisplayCSVFiles();
         }
 
-        public static void EditFileMenu()
+        public static void ChooseFileToEditMenu()
         {
-            Console.WriteLine("Nothing happens yet. So sorry :-(\n");
+            //Console.WriteLine("Nothing happens yet. So sorry :-(\n");
+            CSV.DisplayCSVFiles();
+
+            Console.WriteLine("Enter a filename to edit:");
+            var userInput = Console.ReadLine();
+            Console.WriteLine();
+
+            SwitchEditMenu(userInput);
         }
 
         public static void SelectFileMenu()
@@ -89,6 +97,54 @@ namespace CodewarsScoreFinderTest
             Console.WriteLine("Student Scores High to Low:\n");
             User.DisplayListHighScore();
             Console.WriteLine();
+        }
+
+        public static void SwitchEditMenu(string fileName)
+        {
+            var cont = true;
+
+            do
+            {
+                Console.WriteLine($"CSV File {fileName} Selected.");
+
+                Console.WriteLine("Type the number to make a selection:\n");
+
+                Console.WriteLine("1: Display all Usernames from file");
+                Console.WriteLine("2: Add a new Username to file");
+                Console.WriteLine("3: Edit a Username in file");
+                Console.WriteLine("4: Delete a Username from file");
+                Console.WriteLine("5: Return to Main Menu");
+                Console.WriteLine();
+
+                var userInput = int.Parse(Console.ReadLine());
+                Console.WriteLine();
+
+                switch (userInput)
+                {
+                    case 1:
+                        CSV.ReadCSV(fileName);
+                        CSV.DisplayUsernamesFromFile();
+                        break;
+                    case 2:
+                        CSV.AddNewUserName();
+                        var tempList = CSV.CreateUserNameListFromUsers();
+                        CSV.CreateCSV(tempList, fileName);
+                        break;
+                    case 3:
+                        throw new NotImplementedException();
+                        break;
+                    case 4:
+                        throw new NotImplementedException();
+                        break;
+                    case 5:
+                        cont = false;
+                        MainMenu();
+                        break;
+                    default:
+                        SwitchEditMenu(fileName);
+                        break;
+                }
+            } while (cont);
         }
     }
 }

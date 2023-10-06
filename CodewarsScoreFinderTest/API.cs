@@ -16,7 +16,6 @@ namespace CodewarsScoreFinderTest
 			catch (AggregateException)
 			{
 				throw new AggregateException();
-				//return $"Username {userName} was not found.";
             }
 		}
 	}

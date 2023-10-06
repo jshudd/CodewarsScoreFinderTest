@@ -335,10 +335,10 @@ namespace CodewarsScoreFinderTest
             string search = "optUserName",
             string newName = "optNewName")
         {
-            var fileNameList = RetrieveCSVFileNames();
+            //var fileNameList = RetrieveCSVFileNames();
 
-            DisplayList(fileNameList);
-            Console.WriteLine();
+            //DisplayList(fileNameList);
+            //Console.WriteLine();
 
 
             if (fileName == "optFileName")
@@ -366,10 +366,11 @@ namespace CodewarsScoreFinderTest
             try
             {
                 User.UsersList[index].Name = newName;
+                Console.WriteLine("Username updated.\n");
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                Console.WriteLine($"User Name {search} not found.");
+                Console.WriteLine($"User Name {search} not found.\n");
                 throw new ArgumentOutOfRangeException();
             }
 

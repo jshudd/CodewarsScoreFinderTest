@@ -57,13 +57,16 @@ namespace CodewarsScoreFinderTest
             var tempUserName = "";
             var tempList = new List<string>();
 
-            while (tempUserName != "EXIT")
-            {
-                Console.WriteLine("Enter multiple usernames or type EXIT (all caps) to exit.\n");
-                tempUserName = Console.ReadLine();
+            Console.WriteLine("Enter usernames or type 'exit' to stop.\n");
 
-                if (tempUserName != "EXIT" || tempUserName != "")
+            while (tempUserName.ToLower() != "exit")
+            {
+                tempUserName = PromptUserName();
+
+                if (tempUserName.ToLower() != "exit")
+                {
                     tempList.Add(tempUserName);
+                }
             }
 
             return tempList;
@@ -153,7 +156,7 @@ namespace CodewarsScoreFinderTest
 
             for (int i = 0; i < fileList.Count; i++)
             {
-                Console.WriteLine($"{i + 1}: {fileList[i]}");
+                Console.WriteLine($"{i+1}: {fileList[i]}");
             }
             Console.WriteLine();
         }
@@ -167,7 +170,7 @@ namespace CodewarsScoreFinderTest
 
             while (cont)
             {
-                Console.WriteLine("Enter a filename.");
+                Console.WriteLine("Enter a Filename.");
                 temp = Console.ReadLine();
 
                 if (temp == "")
@@ -186,7 +189,7 @@ namespace CodewarsScoreFinderTest
 
             while (cont)
             {
-                Console.WriteLine("Enter a username.");
+                Console.WriteLine("Enter a Username.");
                 temp = Console.ReadLine();
 
                 if (temp == "")
@@ -284,6 +287,14 @@ namespace CodewarsScoreFinderTest
             if (Directory.Exists(_dirPath))
             {
                 fileNameList = Directory.GetFiles(_dirPath).ToList();
+
+                for (int i = 0; i < fileNameList.Count; i++)
+                {
+                    fileNameList[i] = Path.GetFileNameWithoutExtension(fileNameList[i]);
+                }
+
+                fileNameList.RemoveAt(0);
+                //.DS_Store
             }
             else
             {
@@ -291,12 +302,12 @@ namespace CodewarsScoreFinderTest
                 return null;
             }
 
-            Console.WriteLine("CSV Files Found\n");
+            Console.WriteLine($"{fileNameList.Count} CSV Files Found\n");
 
-            for (int i = 0; i < fileNameList.Count; i++)
-            {
-                fileNameList[i] = Path.GetFileNameWithoutExtension(fileNameList[i]);
-            }
+            //for (int i = 0; i < fileNameList.Count; i++)
+            //{
+            //    fileNameList[i] = Path.GetFileNameWithoutExtension(fileNameList[i]);
+            //}
 
             return fileNameList;
         }

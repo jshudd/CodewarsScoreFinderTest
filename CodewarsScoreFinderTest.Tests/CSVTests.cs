@@ -57,6 +57,8 @@ public class CSVTests
     [Fact]
     public void DeleteUserInCSV_SUCCESS()
     {
+        User.UsersList.Clear();
+
         var users = new List<string>() { "User1", "User2", "User3" };
 
         var fileName = "testCSV";

@@ -96,8 +96,6 @@ public class CSVTests
     [Fact]
     public void UpdateUserInCSV_SUCCESS()
     {
-        CSV.DeleteCSVFile("testCSV");
-
         var users = new List<string>() { "User1", "User2", "User3" };
 
         var fileName = "testCSV";

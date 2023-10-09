@@ -60,7 +60,7 @@ namespace CodewarsScoreFinderTest
                 }
             }
 
-            Console.WriteLine((!VerifyValidFileName(optFileName))
+            Console.WriteLine((VerifyValidFileName(optFileName))
                 ? $"New csv called {optFileName} created successfully.\n"
                 : "New csv file creation unsuccessful.\n");
         }
@@ -398,7 +398,7 @@ namespace CodewarsScoreFinderTest
 
                 for (int i = 0; i < fileNameList.Count - 1; i++)
                 {
-                    fileNameList[i] = Path.GetFileName(fileNameList[i]);
+                    fileNameList[i] = Path.GetFileNameWithoutExtension(fileNameList[i]);
                 }
 
                 return !(fileNameList.Any(x => x.Equals(csvName, StringComparison.OrdinalIgnoreCase)));

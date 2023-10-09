@@ -355,10 +355,10 @@ namespace CodewarsScoreFinderTest
             return fileNameList;
         }
 
-        public static int SelectUserFromCSV(List<string> userList)
-        {
-            throw new NotImplementedException();
-        }
+        //public static int SelectUserFromCSV(List<string> userList)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public static void UpdateUserInfo
             (string fileName = "optFileName",

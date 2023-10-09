@@ -10,8 +10,21 @@ namespace CodewarsScoreFinderTest
         private static string _relativeDirPath = @"ClassLists";
         private static string _dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _relativeDirPath);
 
+        public static void AddNewUserName()
+        {
+            var userInput = PromptNewUserName();
+            Console.WriteLine();
+
+            var newUser = new User() { UserName = userInput };
+
+            User.UsersList.Add(newUser);
+
+            Console.WriteLine($"New Username {newUser.UserName} added to file.\n");
+        }
+
         public static void CreateCSV(List<string>? tempList = null, string? optFileName = null)
         {
+            Console.WriteLine("Creating new CSV file.\n");
             var answer = "";
 
             if (tempList == null)
@@ -26,15 +39,15 @@ namespace CodewarsScoreFinderTest
 
             while (!VerifyValidFileName(optFileName))
             {
-                Console.WriteLine("Filename is already taken. Do you want to overwrite? Y or N?.\n");
+                Console.WriteLine("Filename is already taken. Do you want to overwrite? Y or N?.");
                 answer = Console.ReadLine();
 
-                if (answer.ToLower() == "n")
+                if (answer.ToLower() == "y")
                 {
                     break;
                 }
 
-                optFileName = PromptFileName();
+                optFileName = PromptNewFileName();
             }
 
             var filePath = $"{_dirPath}/{optFileName}.csv";
@@ -47,9 +60,9 @@ namespace CodewarsScoreFinderTest
                 }
             }
 
-            Console.WriteLine((!VerifyValidFileName(optFileName))
-                ? $"New csv called {optFileName} created successfully."
-                : "New csv file creation unsuccessful");
+            Console.WriteLine((VerifyValidFileName(optFileName))
+                ? $"New csv called {optFileName} created successfully.\n"
+                : "New csv file creation unsuccessful.\n");
         }
 
         public static List<string> EnterUserNames()
@@ -78,7 +91,7 @@ namespace CodewarsScoreFinderTest
 
             foreach (var user in User.UsersList)
             {
-                tempList.Add(user.Name);
+                tempList.Add(user.UserName);
             }
 
             return tempList;
@@ -110,38 +123,24 @@ namespace CodewarsScoreFinderTest
 
         public static void DeleteUserInCSV(string? fileName = null, string? userName = null)
         {
-            //display all csv files
-            var files = RetrieveCSVFileNames();
-
-            Console.WriteLine("CSV Files\n");
-            DisplayList(files);
-
-            //user selects csv file
             if (fileName == null)
             {
                 fileName = PromptFileName();
             }
 
-            //add all usernames to list
             var userList = ReadCSVTemp(fileName);
 
-            //display all usernames
             Console.WriteLine("Users\n");
             DisplayList(userList);
 
-            //app user selects user to delete from file
             if (userName == null)
             {
-                userName = Console.ReadLine();
+                userName = PromptUserNameToDelete();
             }
 
-            //get index of userName
-            //var indexNum = userList.IndexOf(userName);
-
-            //remove user from list
-            //userList.RemoveAt(indexNum - 1);
             if (!userList.Contains(userName))
             {
+                Console.WriteLine("Username not found.");
                 throw new UserNotFoundException();
             }
             
@@ -163,6 +162,8 @@ namespace CodewarsScoreFinderTest
 
         public static void DisplayList(List<string> fileNames) => fileNames.ForEach(Console.WriteLine);
 
+        public static void DisplayUsernamesFromFile() => User.UsersList.ForEach(x => Console.WriteLine(x.UserName));
+
         public static string PromptFileName()
         {
             var temp = "";
@@ -170,7 +171,26 @@ namespace CodewarsScoreFinderTest
 
             while (cont)
             {
-                Console.WriteLine("Enter a Filename.");
+                Console.WriteLine("Enter a Filename for csv file.");
+                temp = Console.ReadLine();
+
+                if (temp == "")
+                    Console.WriteLine("Invalid entry. Please try again.\n");
+                else
+                    cont = false;
+            }
+
+            return temp;
+        }
+
+        public static string PromptNewFileName()
+        {
+            var temp = "";
+            var cont = true;
+
+            while (cont)
+            {
+                Console.WriteLine("Enter a New Filename for csv file.");
                 temp = Console.ReadLine();
 
                 if (temp == "")
@@ -190,6 +210,25 @@ namespace CodewarsScoreFinderTest
             while (cont)
             {
                 Console.WriteLine("Enter a Username.");
+                temp = Console.ReadLine();
+
+                if (temp == "")
+                    Console.WriteLine("Invalid entry. Please try again.\n");
+                else
+                    cont = false;
+            }
+
+            return temp;
+        }
+
+        public static string PromptUserNameToDelete()
+        {
+            var temp = "";
+            var cont = true;
+
+            while (cont)
+            {
+                Console.WriteLine("Enter a Username to Delete.");
                 temp = Console.ReadLine();
 
                 if (temp == "")
@@ -222,7 +261,6 @@ namespace CodewarsScoreFinderTest
 
         public static void ReadCSV(string path)
         {
-            //var newCSVPath = $"{_relativeDirPath}/{path}";
             var newCSVPath = $"{_relativeDirPath}/{path}.csv";
 
             string dirPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, newCSVPath);
@@ -259,13 +297,6 @@ namespace CodewarsScoreFinderTest
                 Console.WriteLine($"File {path} not found.");
                 throw new FileNotFoundException();
             }
-
-            //for (int i = 0; i < list.Count; i++)
-            //{
-            //    list[i] = list[i].TrimEnd(',');
-            //}
-
-            //return list;
 
             return RemoveCommas(list);
         }
@@ -312,22 +343,11 @@ namespace CodewarsScoreFinderTest
             return fileNameList;
         }
 
-        public static int SelectUserFromCSV(List<string> userList)
-        {
-            throw new NotImplementedException();
-        }
-
         public static void UpdateUserInfo
             (string fileName = "optFileName",
             string search = "optUserName",
             string newName = "optNewName")
         {
-            var fileNameList = RetrieveCSVFileNames();
-
-            DisplayList(fileNameList);
-            Console.WriteLine();
-
-
             if (fileName == "optFileName")
                 fileName = PromptFileName();
 
@@ -340,10 +360,12 @@ namespace CodewarsScoreFinderTest
 
             var userNames = ReadCSVTemp(fileName);
 
-            DisplayList(userNames);
-
             if (search == "optUserName")
+            {
+                DisplayList(userNames);
+
                 search = PromptUserName();
+            }
 
             var index = userNames.IndexOf(search);
 
@@ -352,11 +374,12 @@ namespace CodewarsScoreFinderTest
 
             try
             {
-                User.UsersList[index].Name = newName;
+                User.UsersList[index].UserName = newName;
+                Console.WriteLine("Username updated.\n");
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                Console.WriteLine($"User Name {search} not found.");
+                Console.WriteLine($"Username {search} not found.\n");
                 throw new ArgumentOutOfRangeException();
             }
 
@@ -375,7 +398,7 @@ namespace CodewarsScoreFinderTest
 
                 for (int i = 0; i < fileNameList.Count - 1; i++)
                 {
-                    fileNameList[i] = Path.GetFileName(fileNameList[i]);
+                    fileNameList[i] = Path.GetFileNameWithoutExtension(fileNameList[i]);
                 }
 
                 return !(fileNameList.Any(x => x.Equals(csvName, StringComparison.OrdinalIgnoreCase)));

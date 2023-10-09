@@ -104,47 +104,45 @@ namespace CodewarsScoreFinderTest
 
             do
             {
+                User.UsersList.Clear();
+                CSV.ReadCSV(fileName);
+                CSV.DisplayUsernamesFromFile();
+                Console.WriteLine();
+
                 Console.WriteLine($"CSV File {fileName} Selected.");
                 Console.WriteLine();
 
                 Console.WriteLine("Type the number to make a selection:\n");
 
-                Console.WriteLine("1: Display all Usernames from file");
-                Console.WriteLine("2: Add a new Username to file");
-                Console.WriteLine("3: Edit a Username in file");
-                Console.WriteLine("4: Delete a Username from file");
-                Console.WriteLine("5: Return to Main Menu");
+                Console.WriteLine("1: Add a new Username to file");
+                Console.WriteLine("2: Edit a Username in file");
+                Console.WriteLine("3: Delete a Username from file");
+                Console.WriteLine("4: Return to Main Menu");
                 Console.WriteLine();
 
                 var userInput = int.Parse(Console.ReadLine());
                 Console.WriteLine();
 
                 switch (userInput)
-                {
+                {                    
                     case 1:
-                        User.UsersList.Clear();
-                        CSV.ReadCSV(fileName);
-                        CSV.DisplayUsernamesFromFile();
-                        Console.WriteLine();
-                        break;
-                    case 2:
                         User.UsersList.Clear();
                         CSV.ReadCSV(fileName);
                         CSV.AddNewUserName();
                         var tempList = CSV.CreateUserNameListFromUsers();
                         CSV.CreateCSV(tempList, fileName);
                         break;
-                    case 3:
+                    case 2:
                         User.UsersList.Clear();
                         CSV.ReadCSV(fileName);
                         CSV.UpdateUserInfo(fileName);
                         break;
-                    case 4:
+                    case 3:
                         User.UsersList.Clear();
                         CSV.ReadCSV(fileName);
                         CSV.DeleteUserInCSV(fileName);
                         break;
-                    case 5:
+                    case 4:
                         cont = false;
                         MainMenu();
                         break;

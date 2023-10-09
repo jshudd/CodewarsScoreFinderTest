@@ -123,11 +123,6 @@ namespace CodewarsScoreFinderTest
 
         public static void DeleteUserInCSV(string? fileName = null, string? userName = null)
         {
-            //var files = RetrieveCSVFileNames();
-
-            //Console.WriteLine("CSV Files\n");
-            //DisplayList(files);
-
             if (fileName == null)
             {
                 fileName = PromptFileName();

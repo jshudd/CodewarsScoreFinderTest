@@ -303,13 +303,6 @@ namespace CodewarsScoreFinderTest
                 throw new FileNotFoundException();
             }
 
-            //for (int i = 0; i < list.Count; i++)
-            //{
-            //    list[i] = list[i].TrimEnd(',');
-            //}
-
-            //return list;
-
             return RemoveCommas(list);
         }
 
@@ -354,11 +347,6 @@ namespace CodewarsScoreFinderTest
 
             return fileNameList;
         }
-
-        //public static int SelectUserFromCSV(List<string> userList)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         public static void UpdateUserInfo
             (string fileName = "optFileName",

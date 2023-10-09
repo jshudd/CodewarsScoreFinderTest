@@ -91,7 +91,7 @@ namespace CodewarsScoreFinderTest
 
             foreach (var user in User.UsersList)
             {
-                tempList.Add(user.Name);
+                tempList.Add(user.UserName);
             }
 
             return tempList;
@@ -377,10 +377,12 @@ namespace CodewarsScoreFinderTest
 
             var userNames = ReadCSVTemp(fileName);
 
-            DisplayList(userNames);
-
             if (search == "optUserName")
+            {
+                DisplayList(userNames);
+
                 search = PromptUserName();
+            }
 
             var index = userNames.IndexOf(search);
 
@@ -389,7 +391,7 @@ namespace CodewarsScoreFinderTest
 
             try
             {
-                User.UsersList[index].Name = newName;
+                User.UsersList[index].UserName = newName;
                 Console.WriteLine("Username updated.\n");
             }
             catch (ArgumentOutOfRangeException ex)

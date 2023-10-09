@@ -96,6 +96,8 @@ public class CSVTests
     [Fact]
     public void UpdateUserInCSV_SUCCESS()
     {
+        CSV.DeleteCSVFile("testCSV");
+
         var users = new List<string>() { "User1", "User2", "User3" };
 
         var fileName = "testCSV";
@@ -110,9 +112,9 @@ public class CSVTests
 
         CSV.ReadCSV(fileName);
 
-        Assert.Equal("UserChanged", User.UsersList[0].Name);
-        Assert.Equal("User2", User.UsersList[1].Name);
-        Assert.Equal("User3", User.UsersList[2].Name);
+        Assert.Equal("UserChanged", User.UsersList[0].UserName);
+        Assert.Equal("User2", User.UsersList[1].UserName);
+        Assert.Equal("User3", User.UsersList[2].UserName);
 
         User.UsersList.Clear();
         CSV.DeleteCSVFile(fileName);

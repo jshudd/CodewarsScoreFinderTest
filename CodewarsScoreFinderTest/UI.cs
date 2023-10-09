@@ -72,7 +72,6 @@ namespace CodewarsScoreFinderTest
 
         public static void ChooseFileToEditMenu()
         {
-            //Console.WriteLine("Nothing happens yet. So sorry :-(\n");
             CSV.DisplayCSVFiles();
 
             Console.WriteLine("Enter a filename to edit:");

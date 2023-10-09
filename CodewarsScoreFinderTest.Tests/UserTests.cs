@@ -80,6 +80,8 @@ namespace CodewarsScoreFinderTest.Tests
         [Fact]
         public void UserListPopulated_SUCCESS()
         {
+            User.UsersList.Clear();
+
             var user1 = new User()
             {
                 UserName = "jshudd"
@@ -103,9 +105,9 @@ namespace CodewarsScoreFinderTest.Tests
             Assert.Equal("Michael Doyle", User.UsersList[1].Name);
             Assert.Equal("Cruz Sanchez", User.UsersList[2].Name);
 
-            Assert.Equal(721, User.UsersList[0].Honor);
+            Assert.Equal(724, User.UsersList[0].Honor);
             Assert.Equal(1274, User.UsersList[1].Honor);
-            Assert.Equal(941, User.UsersList[2].Honor);
+            Assert.Equal(950, User.UsersList[2].Honor);
         }
 
         [Fact]

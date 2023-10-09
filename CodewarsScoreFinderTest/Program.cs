@@ -17,6 +17,8 @@
 
 // New Implementation
 
+// Set Console Title
+Console.Title = "Codewars Score Finder";
 // Set Background Color
 Console.BackgroundColor = ConsoleColor.Black;
 // Set Text Color

@@ -13,6 +13,7 @@
   <ItemGroup>
     <None Include="bin\Debug\net6.0\ClassLists\C#40.csv" />
     <None Include="bin\Debug\net6.0\ClassLists\CWTest.csv" />
+    <None Include="bin\Debug\net6.0\ClassLists\C#41.csv" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
